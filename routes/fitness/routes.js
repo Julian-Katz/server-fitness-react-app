@@ -177,11 +177,11 @@ module.exports = function(app){
                 fiber:foodData.fiber,
                 drink:foodData.drink
             }
-            Food.findByIdAndUpdate({_id:req.body._id},updatedFoodData, (err,result)=>{
+            Food.findByIdAndUpdate({_id:req.body._id},updatedFoodData, {new: true}, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Update was successful!");
+                    res.status(201).send(result);
                 }
             });
         }catch(error){
@@ -199,11 +199,11 @@ module.exports = function(app){
                 baseTime:exerciseData.baseTime,
                 energyBurned:exerciseData.energyBurned,
             }
-            Exercise.findByIdAndUpdate({_id:req.body._id},updatedExerciseData, (err,result)=>{
+            Exercise.findByIdAndUpdate({_id:req.body._id},updatedExerciseData, {new: true}, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Update was successful!");
+                    res.status(201).send(result);
                 }
             });
         }catch(error){
@@ -212,7 +212,7 @@ module.exports = function(app){
         }
      });
 
-     app.put('/fitness/profile/', verifyToken,function (req,res){
+    app.put('/fitness/profile/', verifyToken,function (req,res){
         try{
             let profileData = req.body;
             let updatedProfileData = {    
@@ -223,18 +223,18 @@ module.exports = function(app){
                 sex:profileData.sex,
                 userId:req.user.id
             }
-            Profile.findByIdAndUpdate({_id:req.body._id},updatedProfileData, (err,result)=>{
+            Profile.findByIdAndUpdate({_id:req.body._id},updatedProfileData, {new: true}, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Update was successful!");
+                    res.status(201).send(result);
                 }
             });
         }catch(error){
             let errorObj = {body:req.body,errorMessage:"Server error!" };
             res.status(500).send(errorObj);   
         }
-     });
+    });
 
 
      app.put('/fitness/day/', verifyToken,function (req,res){
@@ -244,11 +244,11 @@ module.exports = function(app){
                 food:dayData.food,
                 exercise:dayData.exercise,
             }
-            Day.findByIdAndUpdate({_id:req.body._id},updatedDayData, (err,result)=>{
+            Day.findByIdAndUpdate({_id:req.body._id},updatedDayData, {new: true}, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Update was successful!");
+                    res.status(201).send(result);
                 }
             });
         }catch(error){
