@@ -15,7 +15,7 @@ module.exports = function(app){
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Insert was successful!");
+                    res.status(201).send(food);
                 }
             });
         }catch(error){
@@ -34,7 +34,7 @@ module.exports = function(app){
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Insert was successful!");
+                    res.status(201).send(exercise);
                 }
             });
         }catch(error){
@@ -54,7 +54,7 @@ module.exports = function(app){
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
-                    res.status(201).send("Insert was successful!");
+                    res.status(201).send(profile);
                 }
             });
         }catch(error){
@@ -74,7 +74,7 @@ module.exports = function(app){
                     if(err){
                         res.status(422).send("Data are not correct!");
                     }else{
-                        res.status(201).send("Insert was successful!");
+                        res.status(201).send(day);
                     }
                 });
             }
@@ -177,7 +177,7 @@ module.exports = function(app){
                 fiber:foodData.fiber,
                 drink:foodData.drink
             }
-            Food.findByIdAndUpdate({_id:req.body.foodId},updatedFoodData, (err,result)=>{
+            Food.findByIdAndUpdate({_id:req.body._id},updatedFoodData, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
@@ -199,7 +199,7 @@ module.exports = function(app){
                 baseTime:exerciseData.baseTime,
                 energyBurned:exerciseData.energyBurned,
             }
-            Exercise.findByIdAndUpdate({_id:req.body.exerciseId},updatedExerciseData, (err,result)=>{
+            Exercise.findByIdAndUpdate({_id:req.body._id},updatedExerciseData, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
@@ -223,7 +223,7 @@ module.exports = function(app){
                 sex:profileData.sex,
                 userId:req.user.id
             }
-            Profile.findByIdAndUpdate({_id:req.body.profileId},updatedProfileData, (err,result)=>{
+            Profile.findByIdAndUpdate({_id:req.body._id},updatedProfileData, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
@@ -244,7 +244,7 @@ module.exports = function(app){
                 food:dayData.food,
                 exercise:dayData.exercise,
             }
-            Day.findByIdAndUpdate({_id:req.body.dayId},updatedDayData, (err,result)=>{
+            Day.findByIdAndUpdate({_id:req.body._id},updatedDayData, (err,result)=>{
                 if(err){
                     res.status(422).send("Data are not correct!");
                 }else{
