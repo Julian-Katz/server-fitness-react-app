@@ -43,7 +43,7 @@ module.exports = function (app){
     });
 
 
-    app.post('/login', async function(req,res){
+    app.post('/signin', async function(req,res){
         let userData = req.body;
         let user = await User.findOne({ email: userData.email });
         if(user){
