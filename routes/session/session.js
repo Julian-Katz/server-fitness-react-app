@@ -34,7 +34,8 @@ module.exports = function (app){
                     res.status(422).send("data are not correct!");
                 }else{
                     generateToken(res,userData.email, user._id);
-                    res.status(201).send("successfully signed up!");
+                    user.password = undefined;
+                    res.status(201).send(user);
                 }
             });
         }else{
@@ -51,7 +52,8 @@ module.exports = function (app){
 
             if(user.password === pw.toString()){
                 generateToken(res,userData.email, user._id);
-                res.status(201).send("successfully signed in!");
+                user.password = undefined;
+                res.status(201).send(user);
             }else{
                 res.status(401).send("user or password wrong!");
             }
