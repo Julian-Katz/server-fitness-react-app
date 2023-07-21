@@ -6,7 +6,7 @@ let profileSchema = new mongoose.Schema({
     age:{type:Number,required:true},
     height:{type:Number,required:true},
     weight:{type:Number,required:true},
-    sex:{type:Number,required:true},
+    sex:{type:String,required:true},
     userId:{type:mongoose.Schema.Types.ObjectId,required:true}
 });
 
